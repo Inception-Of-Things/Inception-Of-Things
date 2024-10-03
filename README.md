@@ -1,6 +1,6 @@
 # Inception-Of-Things
 
-Devops project dor 42 school
+Devops project for 42 school
 
 ## Stack
 
