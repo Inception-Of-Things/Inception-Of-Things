@@ -1,6 +1,10 @@
 # Inception-Of-Things
 
-Devops project for 42 school
+___Devops project for 42 school___ 
+
+Work In progress 🚧
+
+
 
 ## Stack
 
