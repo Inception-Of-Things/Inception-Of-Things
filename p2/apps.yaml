@@ -1,3 +1,4 @@
+# Deployment pour app1
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -38,6 +39,7 @@ spec:
   type: ClusterIP
 
 ---
+# Deployment pour app2
 
 apiVersion: apps/v1
 kind: Deployment
@@ -64,7 +66,7 @@ spec:
 
 ---
 
-# Service pour app-one
+# Service pour app-two
 apiVersion: v1
 kind: Service
 metadata:
@@ -103,7 +105,7 @@ spec:
         - containerPort: 80
 
 ---
-# Service pour app-one
+# Service pour app-three
 apiVersion: v1
 kind: Service
 metadata:
