@@ -1,3 +1,19 @@
+# ConfigMap for app-one
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-one-config
+data:
+  index.html: |
+    <html>
+      <head>
+        <title>Welcome to App One</title>
+      </head>
+      <body>
+        <h1>Hello from App One!</h1>
+      </body>
+    </html>
+
 # Deployment for app1
 ---
 apiVersion: apps/v1
@@ -21,6 +37,14 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/nginx/html/index.html
+          subPath: index.html  # This allows to mount the file directly
+      volumes:
+      - name: html-volume
+        configMap:
+          name: app-one-config
 
 ---
 
@@ -37,5 +61,3 @@ spec:
       port: 80
       targetPort: 80
   type: ClusterIP
-
----

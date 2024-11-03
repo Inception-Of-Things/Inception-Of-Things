@@ -1,5 +1,22 @@
-# Deployment for app2
+# ConfigMap for app-two
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-two-config
+data:
+  index.html: |
+    <html>
+      <head>
+        <title>Welcome to App Two</title>
+      </head>
+      <body>
+        <h1>Hello from App Two!</h1>
+      </body>
+    </html>
+
 ---
+
+# Deployment for app-two
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -21,6 +38,14 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/nginx/html/index.html
+          subPath: index.html  # This allows to mount the file directly
+      volumes:
+      - name: html-volume
+        configMap:
+          name: app-two-config
 
 ---
 
@@ -37,5 +62,3 @@ spec:
       port: 80
       targetPort: 80
   type: ClusterIP
-
----

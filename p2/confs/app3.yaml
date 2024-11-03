@@ -1,5 +1,22 @@
-# Deployment for app-three
+# ConfigMap for app-three
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-three-config
+data:
+  index.html: |
+    <html>
+      <head>
+        <title>Welcome to App Three</title>
+      </head>
+      <body>
+        <h1>Hello from App Three!</h1>
+      </body>
+    </html>
+
 ---
+
+# Deployment for app-three
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -21,8 +38,17 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/nginx/html/index.html
+          subPath: index.html  # This allows to mount the file directly
+      volumes:
+      - name: html-volume
+        configMap:
+          name: app-three-config
 
 ---
+
 # Service for app-three
 apiVersion: v1
 kind: Service
@@ -36,5 +62,3 @@ spec:
       port: 80
       targetPort: 80
   type: ClusterIP
-
----
