@@ -23,8 +23,16 @@ print_message() {
 }
 
 
-# Fonction pour attendre que l'utilisateur appuie sur la touche Entrée
 wait_for_enter() {
+    # Vérifier si un message a été passé en argument
+    local message="$1"
+    
+    # Si un message a été passé, l'afficher
+    if [ -n "$message" ]; then
+        print_message "$message" "blue"
+    fi
+    
+    # Afficher le message par défaut pour demander à l'utilisateur d'appuyer sur Entrée
     print_message "Appuyez sur [Entrée] pour continuer..." "blue"
     read -r  # Attend que l'utilisateur appuie sur Entrée
 }

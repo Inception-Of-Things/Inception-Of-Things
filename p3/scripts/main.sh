@@ -22,7 +22,7 @@ main() {
     install_all    # Exécuter l'installation
     
     # Attendre que l'utilisateur appuie sur Entrée avant de continuer
-    wait_for_enter
+    wait_for_enter "Installation des prérequis terminée. Appuyez sur Entrée pour passer à la suite."
     
     # Charger les fichiers de configuration avant de configurer le cluster
     load_conf      # Charger les configurations
