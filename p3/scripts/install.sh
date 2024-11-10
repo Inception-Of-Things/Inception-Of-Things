@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Importer les fonctions de utils.sh
-source ./utils.sh
-
 # Fonction pour installer Docker sur Ubuntu
 install_docker() {
     print_message "Installation de Docker..." "blue"
@@ -47,8 +44,15 @@ add_user_to_docker_group() {
         print_message "L'utilisateur n'est pas dans le groupe docker. Ajout en cours..." "yellow"
         sudo usermod -aG docker $(whoami)
         print_message "Utilisateur ajouté au groupe docker. Veuillez vous déconnecter puis vous reconnecter pour appliquer les changements." "yellow"
+        
+        # Appliquer immédiatement les changements du groupe sans se déconnecter
+        newgrp docker
+
+        # Message supplémentaire pour prévenir que newgrp a été utilisé
+        print_message "Les changements ont été appliqués immédiatement avec 'newgrp docker'." "green"
     fi
 }
+
 
 
 # Fonction pour vérifier l'installation de kubectl
@@ -95,7 +99,7 @@ verify_k3d() {
 # Fonction principale pour vérifier et installer Docker, k3d, kubectl, et ajouter l'utilisateur au groupe docker
 install_all() {
     install_docker
+    add_user_to_docker_group
     verify_kubectl
     verify_k3d
-    add_user_to_docker_group
 }

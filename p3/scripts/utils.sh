@@ -21,3 +21,10 @@ print_message() {
     # Afficher le message avec la couleur
     echo -e "${COLOR_CODE}${MESSAGE}\033[0m"
 }
+
+
+# Fonction pour attendre que l'utilisateur appuie sur la touche Entrée
+wait_for_enter() {
+    print_message "Appuyez sur [Entrée] pour continuer..." "blue"
+    read -r  # Attend que l'utilisateur appuie sur Entrée
+}
