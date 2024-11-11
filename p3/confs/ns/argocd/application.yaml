@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: playground-app
+  namespace: argocd  # Namespace où Argo CD fonctionne
+spec:
+  project: default
+
+  # Source : emplacement du code ou des manifests
+  source:
+    repoURL: 'https://github.com/votre-repo/playground-app.git' # URL de votre dépôt Git
+    targetRevision: HEAD  # Branch, tag, ou commit spécifique
+    path: manifests  # Chemin dans le repo où se trouvent les fichiers YAML
+
+  # Destination : où déployer les ressources
+  destination:
+    server: 'https://kubernetes.default.svc'  # URL du cluster cible
+    namespace: dev  # Namespace où les ressources seront déployées
+
+  # Synchronisation automatique (facultatif)
+  syncPolicy:
+    automated:
+      prune: true  # Supprime les ressources qui ne sont plus dans le repo
+      selfHeal: true  # Corrige les écarts entre l'état désiré et réel
+
