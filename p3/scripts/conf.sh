@@ -14,7 +14,7 @@ check_cluster_exists() {
 
 # Fonction pour créer un cluster k3d
 create_k3d_cluster() {
-    print_message "Création du cluster k3d..." "blue"
+    print_message "\n🚀 Création du cluster k3d..." "blue"
     k3d cluster create mycluster --api-port 6443 -p "8888:8888@loadbalancer" --agents 1
 }
 

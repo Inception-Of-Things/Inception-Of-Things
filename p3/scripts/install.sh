@@ -2,7 +2,7 @@
 
 # Fonction pour installer Docker sur Ubuntu
 install_docker() {
-    print_message "Installation de Docker..." "blue"
+    print_message "\n🐋 Installation de Docker..." "blue"
 
     # Vérifier si Docker est déjà installé
     if ! command -v docker &>/dev/null; then
@@ -28,14 +28,14 @@ install_docker() {
 
         print_message "Docker installé avec succès." "green"
     else
-        print_message "Docker est déjà installé. Restarting Docker..." "green"
+        print_message "Docker est déjà installé.\nRestarting Docker..." "green"
         sudo systemctl start docker
     fi
 }
 
 # Fonction pour vérifier et ajouter l'utilisateur au groupe docker
 add_user_to_docker_group() {
-    print_message "Vérification de l'appartenance au groupe 'docker'..." "blue"
+    print_message "\n🪪  Vérification de l'appartenance au groupe 'docker'..." "blue"
 
     # Vérifier si l'utilisateur fait déjà partie du groupe docker
     if groups $(whoami) | grep &>/dev/null '\bdocker\b'; then
@@ -57,7 +57,7 @@ add_user_to_docker_group() {
 
 # Fonction pour vérifier l'installation de kubectl
 verify_kubectl() {
-    print_message "Vérification de l'installation de kubectl..." "blue"
+    print_message "\n🧭 Vérification de l'installation de kubectl..." "blue"
     if ! command -v kubectl &>/dev/null; then
         print_message "kubectl n'est pas installé. Installation en cours..." "yellow"
         install_kubectl

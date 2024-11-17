@@ -18,17 +18,18 @@ load_conf() {
 # Fonction principale
 main() {
     # Installer et vérifier les prérequis
-    load_install   # Charger les fonctions d'installation quand nécessaire
-    install_all    # Exécuter l'installation
+    load_install   
+    install_all  
     
     # Attendre que l'utilisateur appuie sur Entrée avant de continuer
-    wait_for_enter "Installation des prérequis terminée. Appuyez sur Entrée pour passer à la suite."
+    wait_for_enter "\n =====> Installation des prérequis terminée. <=====\n"
     
-    # Charger les fichiers de configuration avant de configurer le cluster
-    load_conf      # Charger les configurations
+   
+    # Deploiment de k3d
+    load_conf      
     config_and_deploy
 
-    print_message "Cluster k3d créé avec succès, namespaces 'argocd' et 'dev' créés, et l'app est déployé dans 'dev'." "green"
+    print_message "\n=====> Cluster k3d créé avec succès, namespaces 'argocd' et 'dev' créés, et l'app est déployé dans 'dev'. <=====\n" "cyan"
 }
 
 # Appeler la fonction principale

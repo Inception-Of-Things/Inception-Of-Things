@@ -29,10 +29,10 @@ wait_for_enter() {
     
     # Si un message a été passé, l'afficher
     if [ -n "$message" ]; then
-        print_message "$message" "blue"
+        print_message "$message" "cyan"
     fi
     
     # Afficher le message par défaut pour demander à l'utilisateur d'appuyer sur Entrée
-    print_message "Appuyez sur [Entrée] pour continuer..." "blue"
+    print_message "Appuyez sur [Entrée] pour continuer..." "white"
     read -r  # Attend que l'utilisateur appuie sur Entrée
 }
