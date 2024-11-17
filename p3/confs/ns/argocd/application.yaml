@@ -8,9 +8,9 @@ spec:
 
   # Source : emplacement du code ou des manifests
   source:
-    repoURL: 'https://github.com/votre-repo/playground-app.git' # URL de votre dépôt Git
+    repoURL: 'https://github.com/Inception-Of-Things/Inception-Of-Things' # URL de votre dépôt Git
     targetRevision: HEAD  # Branch, tag, ou commit spécifique
-    path: manifests  # Chemin dans le repo où se trouvent les fichiers YAML
+    path: 'p3/confs/ns/dev'  # Chemin dans le repo où se trouvent les fichiers YAML
 
   # Destination : où déployer les ressources
   destination:
