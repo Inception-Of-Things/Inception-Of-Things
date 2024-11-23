@@ -15,22 +15,25 @@ load_conf() {
     source "$SCRIPT_DIR/conf.sh"
 }
 
-# Fonction principale
+# Fichier main.sh
 main() {
-    # Installer et vérifier les prérequis
-    load_install   
-    install_all  
+    # Vérifier si Docker, kubectl et k3d sont installés
+    if ! command -v docker &>/dev/null || ! command -v kubectl &>/dev/null || ! command -v k3d &>/dev/null; then
+        # Si l'un des outils n'est pas installé, appeler l'installation
+        load_install
+        install_all
+    else
+        print_message "Tous les prérequis (Docker, kubectl, k3d) sont déjà installés." "green"
+    fi
     
-    # Attendre que l'utilisateur appuie sur Entrée avant de continuer
+    # Attente que l'utilisateur appuie sur Entrée avant de continuer
     wait_for_enter "\n =====> Installation des prérequis terminée. <=====\n"
-    
-   
-    # Deploiment de k3d
-    load_conf      
+
+    # Déploiement de k3d
+    load_conf
     config_and_deploy
 
     print_message "\n=====> Cluster k3d créé avec succès, namespaces 'argocd' et 'dev' créés, et l'app est déployé dans 'dev'. <=====\n" "cyan"
 }
 
-# Appeler la fonction principale
 main
