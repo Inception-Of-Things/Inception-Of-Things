@@ -59,6 +59,8 @@ ___Same as in part 1___
 To start this project you will need to go inside the ``p2/`` folder and use ``vagrant up``.
 
 ### Test : 
+>[!NOTE]
+> All our confs file for app 1 to 3 and our Ingress are in the ``confs/`` folder.
 
 1. Go inside the **VM** using : ``vagrant ssh idouidiSW``
 2. Use ``sudo kubectl get all -n kube-system``
