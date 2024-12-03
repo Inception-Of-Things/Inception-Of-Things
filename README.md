@@ -4,9 +4,9 @@ ___System admin project for 42 school___
 
 ## Table of Content
 
-1. [Part 1](#part-1)
-2. [Part 2](#part-2)
-3. [Part 3](#part-3)
+1. [Part 1: K3s and Vagrant](#part-1)
+2. [Part 2: K3s and three simple applications](#part-2)
+3. [Part 3: K3d and Argo CD](#part-3)
 
 ## Part 1: K3s and Vagrant   <a href="https://www.vagrantup.com/" ><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vagrant/vagrant-original-wordmark.svg" height=50 width=50 align="right"/><a/> <a href="https://k3s.io/" > <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/k3s/k3s-plain-wordmark.svg" height=50 width=50 align="right"><a/> <a name="part-1"><a/>
 
@@ -73,7 +73,7 @@ To start this project you will need to go inside the ``p2/`` folder and use ``va
 You should have :
 > insert img
 
-## P3 <a name="part-3"><a/>
+##  Part 3: K3d and Argo CD <a name="part-3"><a/>
 
 
 ## Stack
